@@ -4,4 +4,4 @@ Source code for the final exam
 
 # Compile instructions
 
-g++ -stdc++17 main.cpp
+g++ -std=c++17 main.cpp
