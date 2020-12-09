@@ -54,6 +54,48 @@ int main() {
 	init_temps(temps, filename);
 
 	// Start here
+	std::queue<int> temps_queue;
+	//This is a loop to put value in queue
+	for(int i=0;i<temps.size();i++){
+		temps_queue.push(temps[i]);
+			    	}
+		
 
+	std::stack<int> group_A, group_B;
+			
+	for (int i=0; i<temps_queue.size(); i++){
+		int temp = temps_queue.front();
+		temps_queue.pop();
+	if (temp > 99){
+	        group_A.push(temp);
+        }
+	else if (temp <= 99){
+         	    group_B.push(temp);
+	    	    }
+		}
+	int sum = 0; 
+	int max = 0, min = 0;
+	int totalTemperature = group_A.size() + group_B.size();
+	//maximum and minimum value
+	for(int i=0; i<group_A.size();i++){
+		    int top = group_A.top();
+        if(max<top){
+    	        max=top;
+		   }
+   	    group_A.pop();
+    	    sum = sum +top;
+   	}
+         for(int i=0; i<group_B.size();i++){
+	    	    int top = group_A.top();
+         if(min>top){
+    	        min=top;
+	    }
+    	    group_B.pop();
+   	    sum = sum +top;
+    	}
+    	std::cout << "The minimum temperature is: " << min << std::endl;
+	std::cout << "The maximum temperature is: " << max << std::endl;
+	std::cout << "The average temperature is: " << sum/totalTemperature << std::endl;
 	return 0;
 }
+
